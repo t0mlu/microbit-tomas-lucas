@@ -6,22 +6,15 @@ function interact(interval: number) {
     basic.clearScreen()
     i = 1
     while (i < interval + 1) {
-        basic.showString("" + ("" + fibo(i)))
+        basic.showString("" + ("" + seq(i)))
         basic.pause(100)
         basic.clearScreen()
         i += 1
     }
 }
 
-function fibo(n: number): number {
-    if (n == 1) {
-        return 1
-    } else if (n == 2) {
-        return 1
-    } else {
-        return fibo(n - 1) + fibo(n - 2)
-    }
-    
+function seq(n: number): number {
+    return n * (n + 1)
 }
 
 function numElements() {
@@ -37,24 +30,22 @@ function numElements() {
             bclicked += 1
         }
         
-        basic.pause(50)
+        basic.pause(40)
     }
     basic.clearScreen()
-    basic.showString("Fibo")
     interact(atimes)
 }
 
 function showIcon() {
     basic.clearScreen()
     music.startMelody(music.builtInMelody(Melodies.Entertainer), MelodyOptions.Once)
-    for (let index = 0; index < 4; index++) {
-        basic.showIcon(IconNames.SmallDiamond)
-        basic.pause(100)
-        basic.showIcon(IconNames.Diamond)
-        basic.pause(100)
+    for (let index = 0; index < 3; index++) {
+        basic.showIcon(IconNames.Heart)
+        basic.pause(500)
+        basic.showIcon(IconNames.SmallHeart)
     }
     basic.clearScreen()
-    basic.showString("Fibo")
+    basic.showString("seq")
     basic.clearScreen()
 }
 
@@ -64,7 +55,7 @@ basic.forever(function on_forever() {
     atimes = 0
     bclicked = 0
     showIcon()
-    basic.showString("A to input B to fibo")
+    basic.showString("A=n B=ex")
     numElements()
     basic.pause(500)
 })
